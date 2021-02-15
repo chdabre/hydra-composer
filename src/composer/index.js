@@ -5,12 +5,12 @@ import AreaPlugin from 'rete-area-plugin';
 import MinimapPlugin from 'rete-minimap-plugin';
 import ContextMenuPlugin from 'rete-context-menu-plugin';
 
-import OscComponent from './components/OscComponent';
-import RotateComponent from './components/RotateComponent';
-import BlendComponent from './components/BlendComponent';
-import VariableComponent from './components/VariableComponent';
-import NumberComponent from './components/NumberComponent';
-import OutputComponent from './components/OutputComponent';
+import OscComponent from '@/composer/components/sources/OscComponent';
+import RotateComponent from '@/composer/components/geometry/RotateComponent';
+import BlendComponent from '@/composer/components/operators/BlendComponent';
+import VariableComponent from '@/composer/components/math/VariableComponent';
+import NumberComponent from '@/composer/components/math/NumberComponent';
+import OutputComponent from '@/composer/components/OutputComponent';
 
 export default async (container, modelBuilder) => {
   const components = [
