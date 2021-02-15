@@ -1,0 +1,128 @@
+@mixin elevation-4{
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+#rete {
+  .node {
+    background-color: #1E1E1E;
+    @include elevation-4;
+    border: none;
+    min-width: 200px;
+
+    .title {
+      position: absolute;
+      font-size: 16px !important;
+      letter-spacing: 0.7px !important;
+      font-weight: bold;
+      padding: 4px 16px;
+
+      & + .input {
+        padding-top: 40px;
+      }
+    }
+
+    .control {
+      padding: 0;
+      padding-left: 10px;
+    }
+
+    .input, .output {
+      &-title {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        opacity: 0.8;
+        margin: 4px;
+      }
+    }
+
+    .output {
+      &-title {
+        margin: 8px;
+      }
+    }
+  }
+
+  .socket {
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+    border: none;
+
+    &.source {
+      background-color: #F44336;
+    }
+
+    &.float {
+      background-color: #9C27B0;
+    }
+
+    &.output {
+      margin-right: -5px;
+    }
+
+    &.input {
+      margin-left: -5px;
+    }
+  }
+
+  .connection {
+    .main-path {
+      stroke: #9E9E9E;
+    }
+  }
+
+  .context-menu {
+    @include elevation-4;
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    padding: 0px;
+    min-width: 140px;
+
+    .search, .item {
+      padding: 6px 12px;
+      background-color: #1E1E1E;
+      border-bottom: none;
+    }
+
+    .item {
+      &:hover {
+        background-color: #424242;
+      }
+    }
+
+    .hasSubitems.item {
+      &:after {
+        top: 11px;
+        right: 8px;
+        font-size: 10px;
+      }
+    }
+
+    .search {
+      input {
+        margin: 2px 0;
+        border-radius: 4px;
+        font-family: inherit;
+      }
+    }
+  }
+
+  .minimap {
+    background-color: #1E1E1E;
+    @include elevation-4;
+    border: none;
+
+    .mini-viewport {
+      background: #FFC107;
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+
+    .mini-node {
+      background: #9E9E9E;
+      border-radius: 2px;
+    }
+  }
+}
