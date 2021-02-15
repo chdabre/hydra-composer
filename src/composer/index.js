@@ -13,16 +13,22 @@ import NumberComponent from '@/composer/components/math/NumberComponent';
 import OutputComponent from '@/composer/components/OutputComponent';
 import GradientComponent from '@/composer/components/sources/GradientComponent';
 import NoiseComponent from '@/composer/components/sources/NoiseComponent';
+import ShapeComponent from '@/composer/components/sources/ShapeComponent';
+import VoronoiComponent from '@/composer/components/sources/VoronoiComponent';
+import BrightnessComponent from '@/composer/components/color/BrightnessComponent';
 
 export default async (container, modelBuilder) => {
   const components = [
     new OscComponent(),
+    new BrightnessComponent(),
     new RotateComponent(),
     new BlendComponent(),
     new VariableComponent(),
     new NumberComponent(),
     new GradientComponent(),
     new NoiseComponent(),
+    new ShapeComponent(),
+    new VoronoiComponent(),
     new OutputComponent(modelBuilder),
   ];
 
