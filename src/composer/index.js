@@ -16,11 +16,29 @@ import NoiseComponent from '@/composer/components/sources/NoiseComponent';
 import ShapeComponent from '@/composer/components/sources/ShapeComponent';
 import VoronoiComponent from '@/composer/components/sources/VoronoiComponent';
 import BrightnessComponent from '@/composer/components/color/BrightnessComponent';
+import ContrastComponent from '@/composer/components/color/ContrastComponent';
+import ColoramaComponent from '@/composer/components/color/ColoramaComponent';
+import InvertComponent from '@/composer/components/color/InvertComponent';
+import SaturateComponent from '@/composer/components/color/SaturateComponent';
+import ColorComponent from '@/composer/components/color/ColorComponent';
+import LumaComponent from '@/composer/components/color/LumaComponent';
+import PosterizeComponent from '@/composer/components/color/PosterizeComponent';
+import ShiftComponent from '@/composer/components/color/ShiftComponent';
+import ThresholdComponent from '@/composer/components/color/ThresholdComponent';
 
 export default async (container, modelBuilder) => {
   const components = [
     new OscComponent(),
     new BrightnessComponent(),
+    new ColoramaComponent(),
+    new ContrastComponent(),
+    new InvertComponent(),
+    new SaturateComponent(),
+    new ColorComponent(),
+    new LumaComponent(),
+    new PosterizeComponent(),
+    new ShiftComponent(),
+    new ThresholdComponent(),
     new RotateComponent(),
     new BlendComponent(),
     new VariableComponent(),
