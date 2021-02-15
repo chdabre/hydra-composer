@@ -25,6 +25,12 @@ import LumaComponent from '@/composer/components/color/LumaComponent';
 import PosterizeComponent from '@/composer/components/color/PosterizeComponent';
 import ShiftComponent from '@/composer/components/color/ShiftComponent';
 import ThresholdComponent from '@/composer/components/color/ThresholdComponent';
+import KaleidComponent from '@/composer/components/geometry/KaleidComponent';
+import PixelateComponent from '@/composer/components/geometry/PixelateComponent';
+import ScaleComponent from '@/composer/components/geometry/ScaleComponent';
+import ScrollXComponent from '@/composer/components/geometry/ScrollXComponent';
+import ScrollYComponent from '@/composer/components/geometry/ScrollYComponent';
+import RepeatComponent from '@/composer/components/geometry/RepeatComponent';
 
 export default async (container, modelBuilder) => {
   const components = [
@@ -39,7 +45,13 @@ export default async (container, modelBuilder) => {
     new PosterizeComponent(),
     new ShiftComponent(),
     new ThresholdComponent(),
+    new KaleidComponent(),
+    new PixelateComponent(),
+    new RepeatComponent(),
     new RotateComponent(),
+    new ScaleComponent(),
+    new ScrollXComponent(),
+    new ScrollYComponent(),
     new BlendComponent(),
     new VariableComponent(),
     new NumberComponent(),
