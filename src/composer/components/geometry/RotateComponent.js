@@ -2,8 +2,8 @@
 
 import Rete from 'rete';
 import FloatInputControl from '@/composer/controls/FloatInputControl';
+import * as Socket from '@/composer/sockets';
 import ModelBuilder from '@/composer/modelBuilder';
-import * as Socket from '../sockets';
 
 export default class RotateComponent extends Rete.Component {
   constructor() {

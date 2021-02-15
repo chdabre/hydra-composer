@@ -11,6 +11,8 @@ import BlendComponent from '@/composer/components/operators/BlendComponent';
 import VariableComponent from '@/composer/components/math/VariableComponent';
 import NumberComponent from '@/composer/components/math/NumberComponent';
 import OutputComponent from '@/composer/components/OutputComponent';
+import GradientComponent from '@/composer/components/sources/GradientComponent';
+import NoiseComponent from '@/composer/components/sources/NoiseComponent';
 
 export default async (container, modelBuilder) => {
   const components = [
@@ -19,6 +21,8 @@ export default async (container, modelBuilder) => {
     new BlendComponent(),
     new VariableComponent(),
     new NumberComponent(),
+    new GradientComponent(),
+    new NoiseComponent(),
     new OutputComponent(modelBuilder),
   ];
 

@@ -3,7 +3,7 @@
 import Rete from 'rete';
 import FloatInputControl from '@/composer/controls/FloatInputControl';
 import ModelBuilder from '@/composer/modelBuilder';
-import * as Socket from '../sockets';
+import * as Socket from '@/composer/sockets';
 
 export default class OscComponent extends Rete.Component {
   constructor() {

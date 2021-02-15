@@ -2,7 +2,7 @@
 
 import Rete from 'rete';
 import FloatInputControl from '@/composer/controls/FloatInputControl';
-import * as Socket from '../sockets';
+import * as Socket from '@/composer/sockets';
 
 export default class NumberComponent extends Rete.Component {
   constructor() {

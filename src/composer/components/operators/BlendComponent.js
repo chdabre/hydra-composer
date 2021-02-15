@@ -1,8 +1,8 @@
 /* eslint-disable class-methods-use-this, no-param-reassign */
 
 import Rete from 'rete';
-import * as Socket from '../sockets';
-import ModelBuilder from '../modelBuilder';
+import * as Socket from '@/composer/sockets';
+import ModelBuilder from '@/composer/modelBuilder';
 
 export default class BlendComponent extends Rete.Component {
   constructor() {

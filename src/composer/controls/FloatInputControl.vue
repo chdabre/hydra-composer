@@ -1,5 +1,8 @@
 <template>
-  <input class="float-input-control" type="number" step="0.1" :readonly="readonly" :value="value" @input="change($event)"/>
+  <div class="input-control d-flex align-center">
+    <label>{{ ikey }}</label>
+    <input class="float-input-control" type="number" step="0.1" :readonly="readonly" :value="value" @input="change($event)"/>
+  </div>
 </template>
 
 <script>
