@@ -15,7 +15,7 @@ export default class NoiseComponent extends Rete.Component {
     const scale = new Rete.Input('scale', 'Scale', Socket.float);
     const offset = new Rete.Input('offset', 'Offset', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     scale.addControl(new FloatInputControl(this.editor, 'scale', false, 10));
     offset.addControl(new FloatInputControl(this.editor, 'offset', false, 0.1));

@@ -19,7 +19,7 @@ export default class RotateComponent extends Rete.Component {
     angle.addControl(new FloatInputControl(this.editor, 'angle', false, 10.0));
     speed.addControl(new FloatInputControl(this.editor, 'speed', false, 0.0));
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     return node
       .addInput(input)

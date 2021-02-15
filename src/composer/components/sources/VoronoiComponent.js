@@ -16,7 +16,7 @@ export default class VoronoiComponent extends Rete.Component {
     const speed = new Rete.Input('speed', 'Speed', Socket.float);
     const blending = new Rete.Input('blending', 'Blending', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     scale.addControl(new FloatInputControl(this.editor, 'scale', false, 5));
     speed.addControl(new FloatInputControl(this.editor, 'speed', false, 0.3));

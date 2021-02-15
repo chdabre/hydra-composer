@@ -14,7 +14,7 @@ export default class GradientComponent extends Rete.Component {
   builder(node) {
     const speed = new Rete.Input('speed', 'Speed', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     speed.addControl(new FloatInputControl(this.editor, 'speed', false, 1));
 

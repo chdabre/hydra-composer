@@ -18,7 +18,7 @@ export default class RepeatComponent extends Rete.Component {
     const offsetX = new Rete.Input('offsetX', 'Offset X', Socket.float);
     const offsetY = new Rete.Component('offsetY', 'Offset Y', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     repeatX.addControl(new FloatInputControl(this.editor, 'repeatX', false, 3));
     repeatY.addControl(new FloatInputControl(this.editor, 'repeatY', false, 3));

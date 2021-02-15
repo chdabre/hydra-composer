@@ -13,7 +13,7 @@ export default class BlendComponent extends Rete.Component {
   builder(node) {
     const i1 = new Rete.Input('i1', 'Input', Socket.source);
     const i2 = new Rete.Input('i2', 'Blend', Socket.source);
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     return node
       .addInput(i1)

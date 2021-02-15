@@ -11,7 +11,7 @@ export default class VariableComponent extends Rete.Component {
   }
 
   builder(node) {
-    const o0 = new Rete.Output('o0', 'Output', Socket.float);
+    const o0 = new Rete.Output('o0', '', Socket.float);
 
     return node
       .addControl(new SelectInputControl(this.editor, 'variable', false, ['time']))

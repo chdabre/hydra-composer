@@ -11,7 +11,7 @@ export default class NumberComponent extends Rete.Component {
   }
 
   builder(node) {
-    const o0 = new Rete.Output('o0', 'Output', Socket.float);
+    const o0 = new Rete.Output('o0', '', Socket.float);
 
     return node
       .addControl(new FloatInputControl(this.editor, 'number', false, 0.0))

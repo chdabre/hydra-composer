@@ -15,7 +15,7 @@ export default class ColoramaComponent extends Rete.Component {
     const i1 = new Rete.Input('i1', 'Input', Socket.source);
     const amount = new Rete.Input('amount', 'Amount', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     amount.addControl(new FloatInputControl(this.editor, 'amount', false, 0.4));
 

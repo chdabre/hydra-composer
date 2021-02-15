@@ -16,7 +16,7 @@ export default class PixelateComponent extends Rete.Component {
     const x = new Rete.Input('x', 'X Segments', Socket.float);
     const y = new Rete.Input('y', 'Y Segments', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     x.addControl(new FloatInputControl(this.editor, 'x', false, 20));
     y.addControl(new FloatInputControl(this.editor, 'y, false', 20));

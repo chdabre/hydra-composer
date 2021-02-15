@@ -16,7 +16,7 @@ export default class PosterizeComponent extends Rete.Component {
     const bins = new Rete.Input('bins', 'Bins', Socket.float);
     const gamma = new Rete.Input('gamma', 'Gamma', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     bins.addControl(new FloatInputControl(this.editor, 'bins', false, 3.0));
     gamma.addControl(new FloatInputControl(this.editor, 'gamma', false, 0.6));

@@ -17,7 +17,7 @@ export default class ColorComponent extends Rete.Component {
     const g = new Rete.Input('g', 'G', Socket.float);
     const b = new Rete.Input('b', 'B', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     r.addControl(new FloatInputControl(this.editor, 'r', false, 0));
     g.addControl(new FloatInputControl(this.editor, 'g', false, 0));

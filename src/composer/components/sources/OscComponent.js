@@ -16,7 +16,7 @@ export default class OscComponent extends Rete.Component {
     const sync = new Rete.Input('sync', 'Sync', Socket.float);
     const offset = new Rete.Input('offset', 'Offset', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     frequency.addControl(new FloatInputControl(this.editor, 'frequency', false, 60));
     sync.addControl(new FloatInputControl(this.editor, 'sync', false, 0.1));

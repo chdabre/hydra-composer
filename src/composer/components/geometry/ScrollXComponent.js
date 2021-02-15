@@ -17,7 +17,7 @@ export default class ScrollXComponent extends Rete.Component {
     const scroll = new Rete.Input('scroll', 'Scroll', Socket.float);
     const speed = new Rete.Input('speed', 'Speed', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     scroll.addControl(new FloatInputControl(this.editor, 'scroll', false, 0.5));
     speed.addControl(new FloatInputControl(this.editor, 'speed', false, 0));

@@ -17,7 +17,7 @@ export default class ScaleComponent extends Rete.Component {
     const xMult = new Rete.Input('xMult', 'X Multiplier', Socket.float);
     const yMult = new Rete.Input('yMult', 'Y Multiplier', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     size.addControl(new FloatInputControl(this.editor, 'size', false, 1.5));
     xMult.addControl(new FloatInputControl(this.editor, 'xMult', false, 1));

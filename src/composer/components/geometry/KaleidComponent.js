@@ -15,7 +15,7 @@ export default class KaleidComponent extends Rete.Component {
     const i1 = new Rete.Input('i1', 'Input', Socket.source);
     const nSides = new Rete.Input('nSides', 'Repetition', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     nSides.addControl(new FloatInputControl(this.editor, 'nSides', false, 4));
 

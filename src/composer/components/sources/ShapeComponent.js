@@ -16,7 +16,7 @@ export default class ShapeComponent extends Rete.Component {
     const radius = new Rete.Input('radius', 'Radius', Socket.float);
     const smoothing = new Rete.Input('smoothing', 'Smoothing', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     sides.addControl(new FloatInputControl(this.editor, 'sides', false, 3));
     radius.addControl(new FloatInputControl(this.editor, 'radius', false, 0.3));

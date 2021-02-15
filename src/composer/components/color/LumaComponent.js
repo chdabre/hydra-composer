@@ -16,7 +16,7 @@ export default class LumaComponent extends Rete.Component {
     const threshold = new Rete.Input('threshold', 'Threshold', Socket.float);
     const tolerance = new Rete.Input('tolerance', 'Tolerance', Socket.float);
 
-    const o0 = new Rete.Output('o0', 'Output', Socket.source);
+    const o0 = new Rete.Output('o0', '', Socket.source);
 
     threshold.addControl(new FloatInputControl(this.editor, 'threshold', false, 0.5));
     tolerance.addControl(new FloatInputControl(this.editor, 'tolerance', false, 0.1));
