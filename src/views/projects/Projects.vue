@@ -11,22 +11,30 @@
         :project="project"
       ></project-card>
 
-      <v-col cols="3" class=" flex-grow-1">
-        <v-card class="d-flex align-center fill-height" @click="onCreateProject">
-          <v-card-text class="text-center"><v-icon>mdi-plus</v-icon></v-card-text>
-        </v-card>
-      </v-col>
+      <projects-list-action :click="onCreateProject">
+        <v-icon>mdi-plus</v-icon>
+        <span class="subtitle-1">New Project</span>
+      </projects-list-action>
+
+      <import-dialog></import-dialog>
     </v-row>
   </v-container>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import ProjectCard from '@/views/ProjectCard';
+import ProjectCard from './components/ProjectCard';
+import ProjectsListAction from './components/ProjectsListAction';
+import ImportDialog from './components/ImportDialog';
 
 export default {
   name: 'Projects',
-  components: { ProjectCard },
+  components: { ImportDialog, ProjectsListAction, ProjectCard },
+  data() {
+    return {
+      dialog: false,
+    };
+  },
   computed: {
     ...mapGetters('projects', [
       'allProjects',

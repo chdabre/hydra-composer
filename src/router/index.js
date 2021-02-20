@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Editor from '@/views/Editor';
-import Projects from '@/views/Projects';
+import Projects from '@/views/projects/Projects';
 
 Vue.use(VueRouter);
 

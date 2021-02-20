@@ -10,12 +10,16 @@
     <v-main>
       <router-view></router-view>
     </v-main>
+    <global-snackbar></global-snackbar>
   </v-app>
 </template>
 
 <script>
+import GlobalSnackbar from './components/GlobalSnackbar';
+
 export default {
   name: 'App',
+  components: { GlobalSnackbar },
 };
 </script>
 

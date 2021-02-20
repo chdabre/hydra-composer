@@ -19,12 +19,17 @@
         <v-btn icon>
           <v-icon @click="deleteProject(project)">mdi-delete</v-icon>
         </v-btn>
+        <v-btn icon>
+          <v-icon @click="share">mdi-share</v-icon>
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
 </template>
 <script>
 import { mapActions } from 'vuex';
+import copy from 'copy-to-clipboard';
+import EventBus from '@/event-bus';
 
 export default {
   name: 'ProjectCard',
@@ -33,6 +38,14 @@ export default {
     ...mapActions('projects', [
       'deleteProject',
     ]),
+    share() {
+      if (copy(JSON.stringify({ ...this.project }))) {
+        EventBus.$emit('toast', {
+          text: 'Copied to clipboard',
+          timeout: 2000,
+        });
+      }
+    },
   },
 };
 </script>
