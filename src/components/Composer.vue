@@ -8,19 +8,23 @@ import Composer from '../composer';
 
 export default {
   name: 'Composer',
+  props: {
+    editor: Object,
+  },
   data() {
     return {
       composer: null,
+      lastData: null,
     };
   },
-  mounted() {
-    const modelBuilder = new ModelBuilder(this.onUpdate);
-    this.composer = Composer(this.$refs.rete, modelBuilder);
-  },
-  methods: {
-    onUpdate(value) {
-      this.$emit('update', value);
-    },
+  async mounted() {
+    const modelBuilder = new ModelBuilder((v) => this.$emit('update', v));
+    this.composer = await Composer.create(this.$refs.rete, modelBuilder);
+    await this.composer.load(this.editor);
+
+    this.composer.onUpdate(async () => {
+      this.$emit('edit', await this.composer.getJSON());
+    });
   },
 };
 </script>

@@ -1,0 +1,61 @@
+{
+  "id": "demo@0.1.0",
+  "nodes": {
+    "2": {
+      "id": 2,
+      "data": {},
+      "inputs": {
+        "i1": {
+          "connections": [
+            {
+              "node": 7,
+              "output": "o0",
+              "data": {}
+            }
+          ]
+        }
+      },
+      "outputs": {},
+      "position": [
+        -101.3310546875,
+        257.5194091796875
+      ],
+      "name": "Output"
+    },
+    "7": {
+      "id": 7,
+      "data": {
+        "frequency": "60",
+        "sync": 0.1,
+        "offset": 0
+      },
+      "inputs": {
+        "frequency": {
+          "connections": []
+        },
+        "sync": {
+          "connections": []
+        },
+        "offset": {
+          "connections": []
+        }
+      },
+      "outputs": {
+        "o0": {
+          "connections": [
+            {
+              "node": 2,
+              "input": "i1",
+              "data": {}
+            }
+          ]
+        }
+      },
+      "position": [
+        -392.4515380859375,
+        209.51055908203125
+      ],
+      "name": "Oscillator"
+    }
+  }
+}

@@ -31,76 +31,90 @@ import ScaleComponent from '@/composer/components/geometry/ScaleComponent';
 import ScrollXComponent from '@/composer/components/geometry/ScrollXComponent';
 import ScrollYComponent from '@/composer/components/geometry/ScrollYComponent';
 import RepeatComponent from '@/composer/components/geometry/RepeatComponent';
+import ModulateComponent from '@/composer/components/modulators/ModulateComponent';
 
-export default async (container, modelBuilder) => {
-  const components = [
-    new OscComponent(),
-    new BrightnessComponent(),
-    new ColoramaComponent(),
-    new ContrastComponent(),
-    new InvertComponent(),
-    new SaturateComponent(),
-    new ColorComponent(),
-    new LumaComponent(),
-    new PosterizeComponent(),
-    new ShiftComponent(),
-    new ThresholdComponent(),
-    new KaleidComponent(),
-    new PixelateComponent(),
-    new RepeatComponent(),
-    new RotateComponent(),
-    new ScaleComponent(),
-    new ScrollXComponent(),
-    new ScrollYComponent(),
-    new BlendComponent(),
-    new VariableComponent(),
-    new NumberComponent(),
-    new GradientComponent(),
-    new NoiseComponent(),
-    new ShapeComponent(),
-    new VoronoiComponent(),
-    new OutputComponent(modelBuilder),
-  ];
-
-  const editor = new Rete.NodeEditor('demo@0.1.0', container);
-
-  editor.use(VueRenderPlugin);
-  editor.use(ConnectionPlugin);
-  editor.use(AreaPlugin, {
-    scaleExtent: { min: 0.1, max: 1 },
-  });
-  editor.use(MinimapPlugin);
-  editor.use(ContextMenuPlugin, {
-    delay: 500,
-    allocate: (c) => (c.path ? c.path.split('/') : []),
-  });
-
-  const engine = new Rete.Engine('demo@0.1.0');
-
-  components.forEach((component) => {
-    editor.register(component);
-    engine.register(component);
-  });
-
-  editor.on('process nodecreated noderemoved connectioncreated connectionremoved', async () => {
-    await engine.abort();
-    await engine.process(editor.toJSON());
-
-    localStorage.setItem('hydra', JSON.stringify(editor.toJSON()));
-  });
-
-  engine.on('error', ({ message, data }) => {
-    console.log(message, data);
-  });
-
-  const savedState = JSON.parse(localStorage.getItem('hydra'));
-  if (savedState) {
-    await editor.fromJSON(savedState);
+export default class Composer {
+  constructor(editor, engine, modelBuilder) {
+    this.editor = editor;
+    this.engine = engine;
+    this.modelBuilder = modelBuilder;
   }
 
-  AreaPlugin.zoomAt(editor);
+  static async create(container, modelBuilder) {
+    const components = [
+      new OscComponent(),
+      new BrightnessComponent(),
+      new ColoramaComponent(),
+      new ContrastComponent(),
+      new InvertComponent(),
+      new SaturateComponent(),
+      new ColorComponent(),
+      new LumaComponent(),
+      new PosterizeComponent(),
+      new ShiftComponent(),
+      new ThresholdComponent(),
+      new KaleidComponent(),
+      new PixelateComponent(),
+      new RepeatComponent(),
+      new RotateComponent(),
+      new ScaleComponent(),
+      new ScrollXComponent(),
+      new ScrollYComponent(),
+      new BlendComponent(),
+      new ModulateComponent(),
+      new VariableComponent(),
+      new NumberComponent(),
+      new GradientComponent(),
+      new NoiseComponent(),
+      new ShapeComponent(),
+      new VoronoiComponent(),
+      new OutputComponent(modelBuilder),
+    ];
 
-  setTimeout(() => editor.trigger('process'), 1000);
+    const editor = new Rete.NodeEditor('demo@0.1.0', container);
 
-  return editor;
-};
+    editor.use(VueRenderPlugin);
+    editor.use(ConnectionPlugin);
+    editor.use(AreaPlugin, {
+      scaleExtent: { min: 0.1, max: 1 },
+    });
+    editor.use(MinimapPlugin);
+    editor.use(ContextMenuPlugin, {
+      delay: 500,
+      allocate: (c) => (c.path ? c.path.split('/') : []),
+    });
+
+    const engine = new Rete.Engine('demo@0.1.0');
+
+    components.forEach((component) => {
+      editor.register(component);
+      engine.register(component);
+    });
+
+    editor.on('process nodecreated noderemoved connectioncreated connectionremoved', async () => {
+      await engine.abort();
+      await engine.process(editor.toJSON());
+    });
+
+    engine.on('error', ({ message, data }) => {
+      console.log(message, data);
+    });
+
+    return new Composer(editor, engine, modelBuilder);
+  }
+
+  onUpdate(callback) {
+    this.editor.on('process nodecreated noderemoved connectioncreated connectionremoved', callback);
+  }
+
+  async load(data) {
+    await this.editor.fromJSON(data);
+    await this.engine.process(this.editor.toJSON());
+
+    AreaPlugin.zoomAt(this.editor);
+  }
+
+  async getJSON() {
+    return this.editor.toJSON();
+  }
+}
