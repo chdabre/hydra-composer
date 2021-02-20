@@ -9,6 +9,7 @@ const state = {
 };
 
 const getters = {
+  allProjects: (state) => state.projects,
   projectById: (state) => (id) => state.projects.find((r) => String(r.id) === String(id)),
 };
 
@@ -25,6 +26,10 @@ const actions = {
   },
   async updateProject({ commit }, project) {
     commit(types.PROJECTS_UPDATE_PROJECT, project);
+    return project;
+  },
+  async deleteProject({ commit }, project) {
+    commit(types.PROJECTS_DELETE_PROJECT, project);
     return project;
   },
 };
@@ -44,6 +49,9 @@ const mutations = {
     });
 
     if (!updated) state.projects.push(project);
+  },
+  [types.PROJECTS_DELETE_PROJECT](state, project) {
+    state.projects = state.projects.filter((item) => item.id !== project.id);
   },
 };
 

@@ -96,10 +96,6 @@ export default class Composer {
       await engine.process(editor.toJSON());
     });
 
-    engine.on('error', ({ message, data }) => {
-      console.log(message, data);
-    });
-
     return new Composer(editor, engine, modelBuilder);
   }
 
@@ -109,6 +105,7 @@ export default class Composer {
 
   async load(data) {
     await this.editor.fromJSON(data);
+    await this.engine.abort();
     await this.engine.process(this.editor.toJSON());
 
     AreaPlugin.zoomAt(this.editor);

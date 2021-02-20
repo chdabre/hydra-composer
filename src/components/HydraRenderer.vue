@@ -5,6 +5,15 @@
 <script>
 import Hydra from 'hydra-synth';
 
+function blobToDataURL(blob) {
+  return new Promise((fulfill, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = () => fulfill(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
+
 export default {
   name: 'HydraRenderer',
   props: {
@@ -54,6 +63,12 @@ export default {
           this.hydra.hush();
         }
       }
+    },
+    async getScreenImageURL() {
+      const hydraImage = await new Promise((resolve) => {
+        this.hydra.getScreenImage(resolve);
+      });
+      return blobToDataURL(hydraImage);
     },
   },
 };

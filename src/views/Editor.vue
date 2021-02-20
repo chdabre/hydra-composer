@@ -8,6 +8,7 @@
     ></composer>
     <v-card class="preview" elevation="4">
       <hydra-renderer
+        ref="hydraRenderer"
         :model="model"
       ></hydra-renderer>
     </v-card>
@@ -49,8 +50,9 @@ export default {
     onUpdate(value) {
       this.model = value;
     },
-    onEdit(value) {
-      this.updateProject({ ...this.project, editor: value });
+    async onEdit(value) {
+      const image = await this.$refs.hydraRenderer.getScreenImageURL();
+      await this.updateProject({ ...this.project, editor: value, image });
     },
   },
 };
