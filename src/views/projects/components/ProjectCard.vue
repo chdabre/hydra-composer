@@ -39,7 +39,7 @@ export default {
       'deleteProject',
     ]),
     share() {
-      if (copy(JSON.stringify({ ...this.project }))) {
+      if (copy(JSON.stringify({ ...this.project, image: null }))) {
         EventBus.$emit('toast', {
           text: 'Copied to clipboard',
           timeout: 2000,
