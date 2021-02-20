@@ -32,6 +32,7 @@ import ScrollXComponent from '@/composer/components/geometry/ScrollXComponent';
 import ScrollYComponent from '@/composer/components/geometry/ScrollYComponent';
 import RepeatComponent from '@/composer/components/geometry/RepeatComponent';
 import ModulateComponent from '@/composer/components/modulators/ModulateComponent';
+import SourceComponent from '@/composer/components/sources/SourceComponent';
 
 export default class Composer {
   constructor(editor, engine, modelBuilder) {
@@ -68,6 +69,7 @@ export default class Composer {
       new NoiseComponent(),
       new ShapeComponent(),
       new VoronoiComponent(),
+      new SourceComponent(),
       new OutputComponent(modelBuilder),
     ];
 

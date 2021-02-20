@@ -57,6 +57,7 @@ export default {
           try {
             this.hydra.eval(this.model);
           } catch (e) {
+            console.log(e);
             this.hydra.hush();
           }
         } else {

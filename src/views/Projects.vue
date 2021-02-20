@@ -11,8 +11,8 @@
         :project="project"
       ></project-card>
 
-      <v-col cols="3">
-        <v-card height="250" class="d-flex align-center" @click="onCreateProject">
+      <v-col cols="3" class=" flex-grow-1">
+        <v-card class="d-flex align-center fill-height" @click="onCreateProject">
           <v-card-text class="text-center"><v-icon>mdi-plus</v-icon></v-card-text>
         </v-card>
       </v-col>
