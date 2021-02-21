@@ -11,6 +11,7 @@
         ref="hydraRenderer"
         :model="model"
       ></hydra-renderer>
+      <v-btn icon class="cast-icon" @click="toggleCasting"><v-icon>mdi-cast</v-icon></v-btn>
     </v-card>
   </v-container>
 </template>
@@ -20,6 +21,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 import Composer from '@/components/Composer';
 import HydraRenderer from '@/components/HydraRenderer';
+import CastSender from '@/services/castSender';
 
 export default {
   name: 'Editor',
@@ -33,6 +35,8 @@ export default {
   data() {
     return {
       model: '',
+      castSender: null,
+      castSession: null,
     };
   },
   computed: {
@@ -49,10 +53,29 @@ export default {
     ]),
     onUpdate(value) {
       this.model = value;
+      this.sendCastData();
     },
     async onEdit(value) {
       const image = await this.$refs.hydraRenderer.getScreenImageURL();
       await this.updateProject({ ...this.project, editor: value, image });
+    },
+    async toggleCasting() {
+      if (!this.castSession) {
+        if (!this.castSender) this.castSender = new CastSender();
+        this.castSession = await this.castSender.requestSession();
+        this.sendCastData();
+      } else {
+        this.castSender.stop();
+        this.castSession = null;
+      }
+    },
+    sendCastData() {
+      if (this.castSession) {
+        this.castSender.sendMessage({
+          command: 'synth',
+          model: this.model,
+        });
+      }
     },
   },
 };
@@ -65,5 +88,11 @@ export default {
   right: 1rem;
 
   width: 20%;
+}
+
+.cast-icon {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
 }
 </style>
